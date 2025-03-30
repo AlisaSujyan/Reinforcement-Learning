@@ -1,4 +1,4 @@
-# Ten=Armed Bandits
+# Ten-Armed Bandits
 
 ## Overview
 This repository contains an implementation and exploration of the Multi-Armed Bandit problem, as described in Chapter 2 of Reinforcement Learning: An Introduction by Sutton and Barto. The Multi-Armed Bandit is a fundamental problem in reinforcement learning where an agent must balance exploration and exploitation to maximize cumulative rewards.
