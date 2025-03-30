@@ -6,3 +6,4 @@ This repository contains my reinforcement learning projects developed during my 
 "Projects"
 * Tic-Tac-Toe
 * Ten-armed-testbed
+* Grid World
