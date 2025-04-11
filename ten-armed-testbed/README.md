@@ -53,4 +53,4 @@ The experiments compare different strategies based on:
 * Optimal action selection percentage
 
 ## References
- Sutton R.S., Barto A.G. - Reinforcement Learning: An Introduction (2nd edition) https://archive.org/details/rlbook2018/mode/2up
+ Sutton R.S., Barto A.G. - [Reinforcement Learning: An Introduction (2nd edition)](https://archive.org/details/rlbook2018/mode/2up)
