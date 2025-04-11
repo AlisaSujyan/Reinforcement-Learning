@@ -26,4 +26,4 @@ This file contains the State class, which represents the current configuration o
 This is the main file to run the game, integrating the Judge, Player, and State classes. It contains the main game loop, where the AI plays against the opponent.
 
 ## References
- Sutton R.S., Barto A.G. - Reinforcement Learning: An Introduction (2nd edition) https://archive.org/details/rlbook2018/mode/2up
+ Sutton R.S., Barto A.G. - [Reinforcement Learning: An Introduction (2nd edition)](https://archive.org/details/rlbook2018/mode/2up)
