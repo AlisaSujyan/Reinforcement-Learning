@@ -31,7 +31,7 @@ The main Python file contains:
 
 ### Project Results
 
-#### Figure_5_1: Value Function for Usable/Non-Usable Ace
+#### [Figure_5_1](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/blackjack/generated_images/figure_5_1.png): Value Function for Usable/Non-Usable Ace
 
 
 * This figure contains two heatmaps or surface plots showing the state-value function under a fixed policy.
@@ -50,7 +50,7 @@ Figure visualizes how the presence of a usable ace affects decision quality.
 Shows how state values vary depending on what card the dealer shows.
 Also it's a direct output of Monte Carlo on-policy prediction.
 
-#### Figure_5_2: Optimal Policy and Value via Exploring Starts
+#### [Figure_5_2](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/blackjack/generated_images/figure_5_2.png): Optimal Policy and Value via Exploring Starts
 
 * This figure is split into:
 
@@ -63,7 +63,7 @@ Also it's a direct output of Monte Carlo on-policy prediction.
 Figure shows how MC-ES can learn an optimal strategy from scratch through exploration.
 The value plot shows how good it is to be in each state under the learned optimal policy.
 
-#### Figure_5_3: Off-Policy Evaluation Error
+#### [Figure_5_3](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/blackjack/generated_images/figure_5_3.png): Off-Policy Evaluation Error
 
 * This is a line plot comparing two estimators:
 
