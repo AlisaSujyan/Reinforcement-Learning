@@ -22,6 +22,7 @@ RL is widely used in robotics, game AI, finance, and more—where sequential dec
 
 **Reinforcement Learning Methods**
 ![img.png](img.png)
+
 This diagram breaks down RL methods into two primary categories:
 #### 1.Tabular Solution Methods (used when the state/action space is small and manageable)
 - **Bandit Problems**
