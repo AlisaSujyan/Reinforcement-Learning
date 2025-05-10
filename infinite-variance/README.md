@@ -47,7 +47,7 @@ The importance-sampling ratio grows exponentially with the number of left action
 * figure_5_4.png: Output image replicating Figure 5.4 from the book.
 
 ### Output
-The output figure [(figure_5_4.png)](![figure_5_4.png](generated_images/figure_5_4.png)) shows the value estimates over episodes (log scale) across 10 independent runs, demonstrating the instability caused by infinite variance.
+The output figure [(figure_5_4.png)](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/infinite-variance/generated_images/figure_5_4.png) shows the value estimates over episodes (log scale) across 10 independent runs, demonstrating the instability caused by infinite variance.
 
 ## References
  Sutton R.S., Barto A.G. - [Reinforcement Learning: An Introduction (2nd edition)](https://archive.org/details/rlbook2018/mode/2up)
