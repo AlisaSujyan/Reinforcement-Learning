@@ -4,7 +4,7 @@
 This project implements and compares two classical reinforcement learning prediction methods — Temporal-Difference learning (TD(0)) and constant-α Monte Carlo (MC) — on a simple Markov Reward Process (MRP) designed as a random walk. The primary aim is to empirically examine which method better estimates the true value function over time.
 
 ## Problem Description
-We simulate a random walk [environment]((https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/random-walk/book_images/Example_6_2_top.PNG)) with 7 states:
+We simulate a random walk [environment](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/random-walk/book_images/Example_6_2_top.PNG) with 7 states:
 
 *  Non-terminal states:  A, B, C, D, E (internally indexed as states 1–5)
 
