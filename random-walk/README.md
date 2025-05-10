@@ -4,7 +4,7 @@
 This project implements and compares two classical reinforcement learning prediction methods — Temporal-Difference learning (TD(0)) and constant-α Monte Carlo (MC) — on a simple Markov Reward Process (MRP) designed as a random walk. The primary aim is to empirically examine which method better estimates the true value function over time.
 
 ## Problem Description
-We simulate a random walk [environment](should be added) with 7 states:
+We simulate a random walk [environment](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/random-walk/book_images/Example_6_2_top.PNG) with 7 states:
 
 *  Non-terminal states:  A, B, C, D, E (internally indexed as states 1–5)
 
@@ -77,7 +77,7 @@ Two prediction methods are implemented:
 * Reinforces the theoretical advantage of TD’s bootstrapping mechanism.
 
 ## Code Structure:
-* [random_walk.py](): Contains the core algorithm implementations:
+* [random_walk.py](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/random-walk/src/random_walk.py): Contains the core algorithm implementations:
 
   * monte_carlo(): Performs Monte Carlo prediction updates.
 
@@ -87,7 +87,7 @@ Two prediction methods are implemented:
 
   * Defines true state values and initial value estimates.
 
-* [random_walk.ipynb]():
+* [random_walk.ipynb](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/random-walk/notebooks/random_walk.ipynb):
 
   * Imports functions from random_walk.py
 
@@ -97,8 +97,8 @@ Two prediction methods are implemented:
 
 ## Results
 
-#### [example_6_2.png]()
-First figure replicates the left plot of [Example_6_2_bottom.PNG]() from the book. It shows how the estimated value function evolves over time using TD(0). Each curve represents the value estimates after a different number of episodes (e.g., after 0, 1, 10, and 100 episodes).
+#### [example_6_2.png](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/random-walk/generated_images/example_6_2.png)
+First figure replicates the left plot of [Example_6_2_bottom.PNG](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/random-walk/book_images/Example_6_2_bottom.PNG) from the book. It shows how the estimated value function evolves over time using TD(0). Each curve represents the value estimates after a different number of episodes (e.g., after 0, 1, 10, and 100 episodes).
 
 Key insights:
 
@@ -109,7 +109,7 @@ Key insights:
 * After 100 episodes, TD(0)'s estimates are close to the true values.
 
 
-Second figure corresponds to the right plot of [Example_6_2_bottom.PNG]() from the book. It compares the learning speed and stability of MC and TD(0) by plotting the RMSE over episodes.
+Second figure corresponds to the right plot of [Example_6_2_bottom.PNG](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/random-walk/book_images/Example_6_2_bottom.PNG) from the book. It compares the learning speed and stability of MC and TD(0) by plotting the RMSE over episodes.
 
 Key insights:
 
@@ -121,7 +121,7 @@ Key insights:
 
 * The superiority of TD is especially clear in early episodes, where sample efficiency matters most.
 
-#### [figure_6_2.png]()
+#### [figure_6_2.png](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/random-walk/generated_images/figure_6_2.png)
 This plot compares the performance of Temporal-Difference (TD) and Monte Carlo (MC) methods during batch training. The x-axis shows the number of episodes, while the y-axis represents the RMS error averaged over all states. Both methods reduce error over time, but TD consistently achieves lower error than MC. This demonstrates that TD learns more efficiently and converges faster, making it more effective for value prediction in batch settings.
 
 
