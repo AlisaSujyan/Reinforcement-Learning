@@ -135,6 +135,3 @@ This project illustrates the practical advantage of TD learning over Monte Carlo
 * Use data more efficiently, especially in stochastic or continuous tasks.
 
 This makes TD(0) a foundational algorithm in modern reinforcement learning systems.
-
-## References
- Sutton R.S., Barto A.G. - [Reinforcement Learning: An Introduction (2nd edition)](https://archive.org/details/rlbook2018/mode/2up)

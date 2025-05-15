@@ -30,7 +30,3 @@ The solution uses value iteration, a dynamic programming method that updates val
 1. Value Function Estimates over successive sweeps of value iteration.
 
 2. Final Policy showing the stake chosen at each capital level.
-
-## References
-
-Sutton R.S., Barto A.G. - [Reinforcement Learning: An Introduction (2nd edition)](https://archive.org/details/rlbook2018/mode/2up)

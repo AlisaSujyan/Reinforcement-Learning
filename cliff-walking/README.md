@@ -57,7 +57,7 @@ This gridworld is a classic testbed to contrast the two methods. The agent must 
 
 ## Results & Analysis
 #####  Reward per Episode
-[The plot]() shows the total reward per episode over time for SARSA and Q-learning agents on the Cliff Walking task:
+[The plot](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/cliff-walking/generated_images/example_6_6.png) shows the total reward per episode over time for SARSA and Q-learning agents on the Cliff Walking task:
 * Q-learning quickly learns the shortest path along the cliff, which has higher expected return if followed perfectly. However, because it still explores (due to ε-greedy behavior), it often falls into the cliff, receiving -100 and restarting.
 
 * SARSA, being on-policy, learns to avoid the cliff altogether by accounting for its own exploratory behavior. This results in a longer path but more consistent rewards.
@@ -65,7 +65,7 @@ This gridworld is a classic testbed to contrast the two methods. The agent must 
 Conclusion: SARSA performs better during training, as it is safer. Q-learning is riskier during training but eventually converges to the optimal policy if ε→0.
 
 ##### Performance Across Step-Sizes
-[The second plot]() shows how different values of the step-size parameter α affect performance for SARSA and Expected SARSA:
+[The second plot](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/cliff-walking/generated_images/figure_6_3.png) shows how different values of the step-size parameter α affect performance for SARSA and Expected SARSA:
 * Expected SARSA is shown to be more robust across different α values.
 
 * Smaller α values learn more slowly but are more stable.

@@ -39,6 +39,3 @@ An [example learning curve](https://github.com/AlisaSujyan/Reinforcement-Learnin
 * Goal reached in fewer steps
 
 * Stable learning performance by ~8000 time steps
-
-## References
- Sutton R.S., Barto A.G. - [Reinforcement Learning: An Introduction (2nd edition)](https://archive.org/details/rlbook2018/mode/2up)
