@@ -78,6 +78,4 @@ The value plot shows how good it is to be in each state under the learned optima
 Figure highlights the variance and stability differences between the two estimators.
 Figure shows that weighted importance sampling generally has lower variance and is more stable, especially in the long run.
 
-## References
- Sutton R.S., Barto A.G. - [Reinforcement Learning: An Introduction (2nd edition)](https://archive.org/details/rlbook2018/mode/2up)
 
