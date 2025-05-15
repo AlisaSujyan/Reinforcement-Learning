@@ -4,7 +4,7 @@ This project implements the Windy Gridworld problem using SARSA (State-Action-Re
 
 ## Problem Description
 
-The Windy Gridworld is a 7×10 grid environment with a start and goal state. The agent can move in four directions: up, down, left, and right. However, a key twist in this environment is the crosswind blowing upward across the grid, which shifts the agent vertically depending on the column it is in.
+The [Windy Gridworld](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/windy-gridworld/book_images/Example_6_5_inset.PNG) is a 7×10 grid environment with a start and goal state. The agent can move in four directions: up, down, left, and right. However, a key twist in this environment is the crosswind blowing upward across the grid, which shifts the agent vertically depending on the column it is in.
 
 | Column | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
 | ------ | - | - | - | - | - | - | - | - | - | - |
@@ -32,7 +32,7 @@ The Windy Gridworld is a 7×10 grid environment with a start and goal state. The
 * SARSA avoids this issue by learning during the episode and avoiding self-trapping policies.
 
 ## Results
-An [example learning curve]() from SARSA shows:
+An [example learning curve](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/windy-gridworld/generated_images/example_6_5.png) from SARSA shows:
 
 * Decreasing episode lengths over time
 
