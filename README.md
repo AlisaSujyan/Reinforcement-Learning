@@ -67,4 +67,31 @@ This diagram breaks down RL methods into two primary categories:
 
 ---
 
+### 6. [**Blackjack**](https://github.com/AlisaSujyan/Reinforcement-Learning/tree/main/blackjack)
+- **Category**: Monte Carlo Methods
+- **Summary**: A card game environment where the agent learns an optimal policy by sampling complete episodes and averaging returns.
+- **Key Techniques**: First-visit Monte Carlo, ε-greedy policy improvement
 
+### 7. [**Infinite Variance**](https://github.com/AlisaSujyan/Reinforcement-Learning/tree/main/infinite-variance)
+- **Category**: Monte Carlo Methods (Off-Policy)
+- **Summary**: Demonstrates the problem of infinite variance when estimating a target policy using samples from a different behavior policy with importance sampling.
+- **Key Techniques**: Importance sampling, variance analysis
+
+### 8. [**Random Walk**](https://github.com/AlisaSujyan/Reinforcement-Learning/tree/main/random-walk)
+- **Category**: Temporal-Difference Learning
+- **Summary**: A 5-state random walk problem comparing TD(0) and Monte Carlo in terms of convergence behavior and bias/variance trade-off.
+- **Key Techniques**:  TD(0), Monte Carlo, root mean square error (RMSE) evaluation
+
+### 9. [**Windy Gridworld**](https://github.com/AlisaSujyan/Reinforcement-Learning/tree/main/windy-gridworld)
+- **Category**: Temporal-Difference Learning
+- **Summary**: An agent navigates a windy grid to reach a goal while learning from on-policy TD updates using SARSA.
+- **Key Techniques**: SARSA algorithm, ε-greedy policy, stochastic wind dynamics
+
+### 10. [**Cliff Walking**](https://github.com/AlisaSujyan/Reinforcement-Learning/tree/main/cliff-walking)
+- **Category**: Temporal-Difference Learning
+- **Summary**: A comparison between SARSA and Q-Learning in a gridworld with a cliff, illustrating the effects of on-policy vs. off-policy learning.
+- **Key Techniques**: SARSA, Q-Learning, risk-aware vs. greedy learning
+
+
+## References
+* Sutton, R. S., & Barto, A. G. (2018). [Reinforcement Learning](http://incompleteideas.net/book/the-book.html): An Introduction (2nd ed.) 
