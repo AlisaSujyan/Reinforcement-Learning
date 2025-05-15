@@ -34,6 +34,3 @@ This project implements Dynamic Programming methods for solving the Gridworld pr
 * The final value function reflects the negative expected number of steps to termination.
 
 * The greedy policy derived from value function is optimal in this Gridworld setup.
-
-## References
-Sutton R.S., Barto A.G. - [Reinforcement Learning: An Introduction (2nd edition)](https://archive.org/details/rlbook2018/mode/2up)
