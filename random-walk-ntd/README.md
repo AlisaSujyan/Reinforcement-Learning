@@ -61,7 +61,7 @@ where 𝐺_𝑡^(𝑛) is the n-step return:
 
    * Intermediate 𝑛 often achieves the best trade-off.
 
-### [Results](?)
+### [Results](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/random-walk-ntd/generated_images/figure_7_2.png)
 * With n = 1 (TD(0)), updates are local and incremental, leading to stable but slower propagation of terminal rewards.
 * With large n (≈ MC), updates rely heavily on full returns, leading to high variance and slower convergence.
 * With intermediate n (e.g., 3–5), the algorithm achieves the best performance by balancing bias and variance.
