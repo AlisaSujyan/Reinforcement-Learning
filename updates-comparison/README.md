@@ -30,7 +30,7 @@ Thus, an expected update is roughly 𝑏 times more computationally expensive th
 2. **Expected Update**
 
 
-    Q(s,a)←Q(s,a)+α(r+γs′∑​p(s′∣s,a)a′max​Q(s′,a′)−Q(s,a))
+            Q(s,a)←Q(s,a)+α(r+γs′∑​p(s′∣s,a)a′max​Q(s′,a′)−Q(s,a))
 
 * Uses all possible successor states.
 
