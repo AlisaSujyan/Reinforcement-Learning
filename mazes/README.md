@@ -140,8 +140,12 @@ Moves are deterministic unless blocked by an obstacle or maze boundary.
 The Dyna-Q agent combines Q-learning updates with planning from a learned model.
 #### Q-Learning Update
 At each real step:
+
 $$
 Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha \Big[ R_{t+1} + \gamma \max_a Q(S_{t+1}, a) - Q(S_t, A_t) \Big]
+$$
+$$
+Q(S_t, A_t) \gets Q(S_t, A_t) + \alpha \Big[ R_{t+1} + \gamma \max_a Q(S_{t+1}, a) - Q(S_t, A_t) \Big]
 $$
 Planning Updates
 For 𝑛 planning steps:
