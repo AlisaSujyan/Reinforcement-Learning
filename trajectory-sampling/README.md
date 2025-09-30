@@ -68,7 +68,7 @@ $$
     - Performance plotted against the number of expected updates.
 
 
-### [Results]([fogure8_8](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/trajectory-sampling/generated_images/figure_8_8.png))
+### [Results](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/trajectory-sampling/generated_images/figure_8_8.png)
 
 - Small branching factor (b = 1):
 
