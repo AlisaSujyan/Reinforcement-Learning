@@ -143,6 +143,9 @@ At each real step:
 
 `Q(S_t, A_t) = Q(S_t, A_t) + α * [ R_{t+1} + γ * max_a Q(S_{t+1}, a) - Q(S_t, A_t) ]`
 
+$$
+Q(s, a) \leftarrow Q(s, a) + \alpha \Big[ R + \gamma \max_{a'} Q(s', a') - Q(s, a) \Big]
+$$
 
 Planning Updates
 For 𝑛 planning steps:
