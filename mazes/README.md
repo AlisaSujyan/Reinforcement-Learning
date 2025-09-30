@@ -245,9 +245,9 @@ Unlike unprioritized Dyna-Q, which selects planning updates at random, Prioritiz
 #### Update Rule
 For a sampled transition (𝑆, 𝐴, 𝑆′, 𝑅):
 
-    `δ = R + γ * max_a Q(S', a) - Q(S, A)`
+`δ = R + γ * max_a Q(S', a) - Q(S, A)`
 
-    `Q(S, A) = Q(S, A) + α * δ`
+`Q(S, A) = Q(S, A) + α * δ`
 
 If ∣𝛿∣ exceeds a threshold, the transition (and its predecessors) are added to the priority queue for future updates.
 
