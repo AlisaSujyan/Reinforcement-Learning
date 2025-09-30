@@ -83,11 +83,11 @@ Rewards are accumulated over time, and agents are compared in terms of their abi
 
 ### Results
 
-- [Blocking Maze:](figure 8_4)
+- [Blocking Maze:](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/mazes/generated_images/figure_8_4.png)
 
     Both Dyna-Q and Dyna-Q+ eventually adapt, but Dyna-Q+ recovers faster due to its exploratory planning updates.
 
-- [Shortcut Maze:](figure 8_5)
+- [Shortcut Maze:](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/mazes/generated_images/figure_8_5.png)
 
    Dyna-Q often fails to detect the shortcut because its model discourages exploration of that direction. 
 
@@ -180,7 +180,7 @@ For 𝑛 planning steps:
 - Show how planning accelerates policy expansion.
 
 
-### [Results](figure 8_2)
+### [Results](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/mazes/generated_images/figure_8_2.png)
 
 - n = 0 (Q-learning only):
 
@@ -274,7 +274,7 @@ If ∣𝛿∣ exceeds a threshold, the transition (and its predecessors) are add
 
 - Number of backups as a measure of computation
 
-### [Results](example)
+### [Results](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/mazes/generated_images/example_8_4.png)
 
 - **Efficiency:**
 Prioritized Sweeping converges to optimal policies 5–10× faster than standard Dyna-Q.
