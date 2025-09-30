@@ -141,8 +141,6 @@ The Dyna-Q agent combines Q-learning updates with planning from a learned model.
 #### Q-Learning Update
 At each real step:
 
-`Q(S_t, A_t) = Q(S_t, A_t) + α * [ R_{t+1} + γ * max_a Q(S_{t+1}, a) - Q(S_t, A_t) ]`
-
 $$
 Q(s, a) \leftarrow Q(s, a) + \alpha \Big[ R + \gamma \max_{a'} Q(s', a') - Q(s, a) \Big]
 $$
@@ -245,10 +243,14 @@ Unlike unprioritized Dyna-Q, which selects planning updates at random, Prioritiz
 
 #### Update Rule
 For a sampled transition (𝑆, 𝐴, 𝑆′, 𝑅):
+$$
+Q(s, a) \leftarrow Q(s, a) + \alpha \Big[ R + \gamma \max_{a'} Q(s', a') - Q(s, a) \Big]
+$$
 
-`δ = R + γ * max_a Q(S', a) - Q(S, A)`
-
-`Q(S, A) = Q(S, A) + α * δ`
+$$
+\delta = R + \gamma \max_{a'} Q(s', a') - Q(s, a) \\
+Q(s, a) \leftarrow Q(s, a) + \alpha \, \delta
+$$
 
 If ∣𝛿∣ exceeds a threshold, the transition (and its predecessors) are added to the priority queue for future updates.
 
