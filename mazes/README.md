@@ -141,8 +141,7 @@ The Dyna-Q agent combines Q-learning updates with planning from a learned model.
 #### Q-Learning Update
 At each real step:
 
-
-    `Q(S_t, A_t) = Q(S_t, A_t) + α * [ R_{t+1} + γ * max_a Q(S_{t+1}, a) - Q(S_t, A_t) ]`
+`Q(S_t, A_t) = Q(S_t, A_t) + α * [ R_{t+1} + γ * max_a Q(S_{t+1}, a) - Q(S_t, A_t) ]`
 
 
 Planning Updates
