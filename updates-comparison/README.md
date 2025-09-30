@@ -29,8 +29,7 @@ Thus, an expected update is roughly 𝑏 times more computationally expensive th
    
 2. **Expected Update**
 
-
-    Q(s,a)←Q(s,a)+α(r+γs′∑​p(s′∣s,a)a′max​Q(s′,a′)−Q(s,a))
+           Q(s,a)←Q(s,a)+α(r+γs′∑​p(s′∣s,a)a′max​Q(s′,a′)−Q(s,a))
 
 * Uses all possible successor states.
 
@@ -51,7 +50,7 @@ Thus, an expected update is roughly 𝑏 times more computationally expensive th
 
   * Faster overall improvement despite individual updates being noisier.
 
-#### [Performance]()
+#### [Performance](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/updates-comparison/generated_images/figure_8_7.png)
 * The figure shows RMSE vs. number of computations for different branching factors 𝑏.
 
 * As 𝑏 increases, expected updates become more expensive, and sample updates provide faster error reduction per computation unit.
