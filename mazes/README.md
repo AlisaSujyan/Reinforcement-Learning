@@ -151,8 +151,6 @@ For 𝑛 planning steps:
 
 2. Update the action-value estimate using the same Q-learning rule.
 
-    `Q(S, A) = Q(S, A) + α * [ R + γ * max_a Q(S', a) - Q(S, A) ]`
-
 #### Algorithm Parameters
 
 - Step size: 𝛼 = 0.1
