@@ -39,13 +39,19 @@ In this experiment, the 1000 states are partitioned into 10 groups of 100 states
 **Value Function Representation**
 Each group 𝑖 is associated with one weight 𝑤_𝑖 and the approximate value function is:
 
-`v^(s, w) = w_i  if s belongs to group i`
+$$
+v^{(s, w)} = w_i \text{ if } s \text{ belongs to group } i
+$$
+
 
 **Update Rule**
 
 Using the Gradient Monte Carlo algorithm (a special case of SGD), the update for each visited state 𝑆_𝑡 is:
 
-`w_i = w_i + α * (G_t - v^(S_t, w))`
+$$
+w_i \leftarrow w_i + \alpha (G_t - v^{(S_t, w)})
+$$
+
 
 where:
 - 𝐺_𝑡 is the Monte Carlo return,
@@ -70,7 +76,7 @@ The true value function 𝑣_𝜋(𝑠) was compared to the approximate value fu
 
 Additionally, the state visitation distribution 𝜇(𝑠) was estimated empirically during learning.
 
-### [Results](figure9_1)
+### [Results](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/random-walk-fa/generated_images/figure_9_1.png)
 - The approximate value function shows a staircase pattern:
 
     - Within each group, all states share the same predicted value.
@@ -145,10 +151,17 @@ At each time step:
 2. For each non-terminal state:
     - Compute the n-step return:
 
-    `G_t(n) = R_{t+1} + R_{t+2} + ... + R_{t+n} + v^(S_{t+n}, w)`
+    $$
+    G_t^{(n)} = R_{t+1} + R_{t+2} + \cdots + R_{t+n} + v^{(S_{t+n}, w)}
+    $$
+
 
     - Update the value function parameters:
-    `w_{t+1} = w_t + α * [ G_t(n) - v^(S_t, w_t) ] * ∇v^(S_t, w_t)`
+   
+    $$
+    G_t^{(n)} = R_{t+1} + R_{t+2} + \cdots + R_{t+n} + v^{(S_{t+n}, w)}
+    $$
+
 
    - In the case of state aggregation, the gradient is 1 for the corresponding group and 0 for all others.
 
@@ -172,7 +185,7 @@ Two configurations were explored:
 Performance was measured as the unweighted average RMS error across all states and over the first 10 episodes, following Sutton & Barto’s methodology.
 
 
-### [Results](figure9_2)
+### [Results](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/random-walk-fa/generated_images/figure_9_2.png)
 
 - TD(0) produced an approximate value function farther from the true values than gradient MC (due to bootstrapping bias).
 
