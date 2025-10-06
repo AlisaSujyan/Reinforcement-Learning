@@ -152,15 +152,15 @@ At each time step:
     - Compute the n-step return:
 
     $$
-    G_t^{(n)} = R_{t+1} + R_{t+2} + \cdots + R_{t+n} + v^{(S_{t+n}, w)}
-    $$
+G_t^{(n)} = R_{t+1} + R_{t+2} + \cdots + R_{t+n} + v^{(S_{t+n}, w)}
+$$
 
 
     - Update the value function parameters:
    
     $$
-    G_t^{(n)} = R_{t+1} + R_{t+2} + \cdots + R_{t+n} + v^{(S_{t+n}, w)}
-    $$
+G_t^{(n)} = R_{t+1} + R_{t+2} + \cdots + R_{t+n} + v^{(S_{t+n}, w)}
+$$
 
 
    - In the case of state aggregation, the gradient is 1 for the corresponding group and 0 for all others.
