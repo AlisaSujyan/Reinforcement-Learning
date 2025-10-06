@@ -149,14 +149,17 @@ At each time step:
 1. The agent selects an action and transitions to a new state with a received reward.
 
 2. For each non-terminal state:
-    - Compute the n-step return:
+
+- Compute the n-step return:
 
 $$
 G_t^{(n)} = R_{t+1} + R_{t+2} + \cdots + R_{t+n} + v^{(S_{t+n}, w)}
 $$
 
 
-    - Update the value function parameters:
+
+- Update the value function parameters:
+
    
 $$
 G_t^{(n)} = R_{t+1} + R_{t+2} + \cdots + R_{t+n} + v^{(S_{t+n}, w)}
