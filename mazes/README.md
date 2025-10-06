@@ -83,11 +83,11 @@ Rewards are accumulated over time, and agents are compared in terms of their abi
 
 ### Results
 
-- [Blocking Maze:](figure 8_4)
+- [Blocking Maze:](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/mazes/generated_images/figure_8_4.png)
 
     Both Dyna-Q and Dyna-Q+ eventually adapt, but Dyna-Q+ recovers faster due to its exploratory planning updates.
 
-- [Shortcut Maze:](figure 8_5)
+- [Shortcut Maze:](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/mazes/generated_images/figure_8_5.png)
 
    Dyna-Q often fails to detect the shortcut because its model discourages exploration of that direction. 
 
@@ -140,9 +140,11 @@ Moves are deterministic unless blocked by an obstacle or maze boundary.
 The Dyna-Q agent combines Q-learning updates with planning from a learned model.
 #### Q-Learning Update
 At each real step:
+
 $$
-Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha \Big[ R_{t+1} + \gamma \max_a Q(S_{t+1}, a) - Q(S_t, A_t) \Big]
+Q(s, a) \leftarrow Q(s, a) + \alpha \Big[ R + \gamma \max_{a'} Q(s', a') - Q(s, a) \Big]
 $$
+
 Planning Updates
 For 𝑛 planning steps:
 
@@ -180,7 +182,7 @@ For 𝑛 planning steps:
 - Show how planning accelerates policy expansion.
 
 
-### [Results](figure 8_2)
+### [Results](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/mazes/generated_images/figure_8_2.png)
 
 - n = 0 (Q-learning only):
 
@@ -241,12 +243,15 @@ Unlike unprioritized Dyna-Q, which selects planning updates at random, Prioritiz
 
 #### Update Rule
 For a sampled transition (𝑆, 𝐴, 𝑆′, 𝑅):
+
 $$
-\delta = R + \gamma \max_a Q(S', a) - Q(S, A)
+\delta = R + \gamma \max_{a'} Q(s', a') - Q(s, a)
 $$
+
 $$
-Q(S, A) \leftarrow Q(S, A) + \alpha \delta
+Q(s, a) \leftarrow Q(s, a) + \alpha \, \delta
 $$
+
 If ∣𝛿∣ exceeds a threshold, the transition (and its predecessors) are added to the priority queue for future updates.
 
 **Algorithm Parameters** 
@@ -274,7 +279,7 @@ If ∣𝛿∣ exceeds a threshold, the transition (and its predecessors) are add
 
 - Number of backups as a measure of computation
 
-### [Results](example)
+### [Results](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/mazes/generated_images/example_8_4.png)
 
 - **Efficiency:**
 Prioritized Sweeping converges to optimal policies 5–10× faster than standard Dyna-Q.
