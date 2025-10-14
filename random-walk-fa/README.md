@@ -230,7 +230,13 @@ The environment is a **1000-state random walk**, a generalization of the classic
   * Right termination → +1
   * All other transitions → 0
 
-The goal is to approximate the **true state-value function** $$ ( v_\pi(s) ), $$ which is nearly linear across the state space, using **different function bases** and measure their root-mean-squared error (RMSE) during learning.
+The goal is to approximate the **true state-value function** 
+
+$$
+v_\pi(s),
+$$
+
+which is nearly linear across the state space, using **different function bases** and measure their root-mean-squared error (RMSE) during learning.
 
 
 ### Learning Algorithms
@@ -245,13 +251,25 @@ $$
 \mathbf{w}_{t+1} = \mathbf{w}_t + \alpha \left(G_t - \hat{v}(S_t, \mathbf{w}*t)\right) \nabla*{\mathbf{w}} \hat{v}(S_t, \mathbf{w}_t)
 $$
 
-where $$ ( \hat{v}(S_t, \mathbf{w}) )$$ is a **linear approximation** of the value function:
+where 
+
+$$
+\hat{v}(S_t, \mathbf{w})
+$$
+
+is a **linear approximation** of the value function:
 
 $$
 \hat{v}(S_t, \mathbf{w}) = \mathbf{w}^\top \mathbf{x}(S_t)
 $$
 
-and $$ ( \mathbf{x}(S_t) ) $$ is a **feature vector** derived from either **polynomial** or **Fourier** bases.
+and 
+
+$$
+\mathbf{x}(S_t)
+$$ 
+
+is a **feature vector** derived from either **polynomial** or **Fourier** bases.
 
 
 
@@ -286,7 +304,13 @@ This basis tends to be **better conditioned** and provides smoother approximatio
 * **Number of runs:** 1
 * **Episodes per run:** 5000
 * **Orders:** 5, 10, 20
-* **Step-sizes:** $$ ( \alpha = 1\times10^{-4} ) and ( 5\times10^{-5} ) $$
+* **Step-sizes:**
+
+$$
+\alpha = 1\times10^{-4} ) and ( 5\times10^{-5}
+$$
+  
+  
 * **Algorithms:** Gradient Monte Carlo with each basis type.
 * **Performance metric:** RMSE between predicted values and analytically derived true values.
 
@@ -305,7 +329,7 @@ For each configuration:
 5. Plot **learning curves** comparing convergence speed and asymptotic error.
 
 
-### [Results]()
+### [Results](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/random-walk-fa/generated_images/figure_9_5.png)
 
 * **Fourier basis** consistently outperformed the **polynomial basis** in both convergence speed and stability.
 * As the order increased:
