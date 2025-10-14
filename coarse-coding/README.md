@@ -13,6 +13,7 @@ The goal is to analyze how the **size of the receptive fields** (intervals) infl
 We aim to learn a **1-dimensional square-wave function** using **linear function approximation** with **coarse coding** features.
 
 * The target function ( U_t ) is defined as:
+
   $$
   U(x) =
   \begin{cases}
@@ -20,6 +21,7 @@ We aim to learn a **1-dimensional square-wave function** using **linear function
   0, & \text{otherwise}
   \end{cases}
   $$
+  
 * The domain is the interval ([0, 2)).
 * Because the task is 1-dimensional, receptive fields are **intervals** rather than circular regions.
 * Learning is performed with three different receptive field widths: **narrow**, **medium**, and **broad**.
@@ -27,9 +29,11 @@ We aim to learn a **1-dimensional square-wave function** using **linear function
 * Samples ((x, U(x))) are drawn uniformly at random from the domain.
 
 The **step-size parameter** is scaled according to:
+
 $$
 \alpha = \frac{0.2}{n}
 $$
+
 where ( n ) is the number of features active at a given time.
 
 
@@ -42,6 +46,7 @@ Each receptive field is modeled as an **interval** ([l, r)).
 A point (x) is represented by the set of active features whose intervals contain (x).
 
 The approximate value function is computed as:
+
 $$
 \hat{v}(x) = \sum_{i \in \text{active}(x)} w_i
 $$
@@ -49,10 +54,13 @@ $$
 ### Learning Update
 
 Given a sample ((x, y)) from the target function:
+
 $$
 \delta = y - \hat{v}(x)
 $$
+
 The weight update for each active feature (i) is:
+
 $$
 w_i \leftarrow w_i + \frac{\alpha}{n} , \delta
 $$
@@ -75,8 +83,7 @@ In each case:
 * The same number of updates was performed per setting.
 
 
-
-## Results
+### [Results](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/coarse-coding/generated_images/figure_9_8.png)
 
 * With **broad features**, updates generalized widely, producing smooth approximations early in learning.
 * With **narrow features**, learning was slower and more localized, resulting in a “bumpy” function early on.
@@ -85,8 +92,7 @@ In each case:
 These results demonstrate that **feature width strongly affects generalization speed**, but **only slightly affects final performance**.
 
 
-
-## Summary of Findings
+### Summary of Findings
 
 | Feature Width | Early Learning | Generalization | Final Accuracy |
 | ------------- | -------------- | -------------- | -------------- |
