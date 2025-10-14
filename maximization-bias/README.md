@@ -20,13 +20,20 @@ The structure is as follows:
 * **Available Actions from B:**
 
   * Each action leads **immediately to termination**, with a reward drawn from a **normal distribution**:
+    
     $$
     R \sim \mathcal{N}(-0.1, 1.0^2)
     $$
+    
 * The **expected return** for any trajectory starting with the **Left** action is:
-  $$
-  \mathbb{E}[G_t | A, \text{left}] = -0.1
-  $$
+
+$$
+\mathbb{E}[G_t \mid A, \text{left}] = -0.1
+$$
+
+
+
+  
   Therefore, **taking Left from state A is suboptimal**.
 
 However, **maximization bias** can cause Q-learning to **overestimate** the value of ( B ), making the **Left** action appear more favorable than it truly is.
@@ -38,17 +45,21 @@ However, **maximization bias** can cause Q-learning to **overestimate** the valu
 ### Q-Learning
 
 The standard **Q-learning** algorithm (Equation 6.8 in Sutton & Barto) updates its action-value estimates as:
+
 $$
 Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha \left[R_{t+1} + \gamma \max_{a} Q(S_{t+1}, a) - Q(S_t, A_t)\right]
 $$
+
 Because both the **maximization** and **evaluation** are based on the same Q-values, this introduces **positive bias** in the estimates.
 
 ### Double Q-Learning
 
 **Double Q-learning** mitigates this bias by maintaining **two independent estimators**, ( Q_1 ) and ( Q_2 ), and alternating updates:
+
 $$
 Q_1(S_t, A_t) \leftarrow Q_1(S_t, A_t) + \alpha \left[R_{t+1} + \gamma Q_2(S_{t+1}, \arg\max_a Q_1(S_{t+1}, a)) - Q_1(S_t, A_t)\right]
 $$
+
 and vice versa for ( Q_2 ).
 This decouples **action selection** (argmax) from **evaluation** (expected value), significantly reducing overestimation.
 
