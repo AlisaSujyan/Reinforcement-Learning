@@ -205,3 +205,121 @@ Performance was measured as the unweighted average RMS error across all states a
 - State aggregation provides a simple, interpretable way to scale value estimation to large state spaces.
 
 - n-step TD bridges the gap between Monte Carlo and TD(0), offering a continuum between full returns and bootstrapped updates.
+
+# 3. Polynomials vs Fourier Basis — 1000-State Random Walk
+
+###  Project Overview
+
+This project compares **polynomial** and **Fourier** basis functions for **linear value function approximation** on the **1000-state random walk** problem. 
+
+The main goal is to evaluate how the choice of basis function family affects the **learning speed**, **stability**, and **asymptotic accuracy** of the **Gradient Monte Carlo** algorithm when applied to a continuous approximation problem.
+
+While both bases can represent smooth functions, they differ significantly in their **numerical conditioning** and **generalization behavior**, particularly in online learning scenarios.
+
+
+### Problem Description
+
+The environment is a **1000-state random walk**, a generalization of the classic random walk problem:
+
+* **States:** 1–1000 (non-terminal), with terminal states at 0 and 1001.
+* **Start state:** 500 (center).
+* **Transitions:** From the current state, the agent moves randomly left or right up to 100 states.
+* **Rewards:**
+
+  * Left termination → −1
+  * Right termination → +1
+  * All other transitions → 0
+
+The goal is to approximate the **true state-value function** $$ ( v_\pi(s) ), $$ which is nearly linear across the state space, using **different function bases** and measure their root-mean-squared error (RMSE) during learning.
+
+
+### Learning Algorithms
+
+### Gradient Monte Carlo with Function Approximation
+
+The **Gradient Monte Carlo (MC)** algorithm is used to update value estimates based on complete-episode returns.
+
+Update rule:
+
+$$
+\mathbf{w}_{t+1} = \mathbf{w}_t + \alpha \left(G_t - \hat{v}(S_t, \mathbf{w}*t)\right) \nabla*{\mathbf{w}} \hat{v}(S_t, \mathbf{w}_t)
+$$
+
+where $$ ( \hat{v}(S_t, \mathbf{w}) )$$ is a **linear approximation** of the value function:
+
+$$
+\hat{v}(S_t, \mathbf{w}) = \mathbf{w}^\top \mathbf{x}(S_t)
+$$
+
+and $$ ( \mathbf{x}(S_t) ) $$ is a **feature vector** derived from either **polynomial** or **Fourier** bases.
+
+
+
+### Polynomial Basis
+
+For a given order ( n ), the polynomial basis defines feature components as powers of the normalized state:
+
+$$
+x_i(s) = s^i, \quad i = 0, 1, \dots, n
+$$
+
+This basis often struggles with **numerical instability** and **overfitting**, especially for high-order terms or online updates.
+
+
+
+### Fourier Basis
+
+The Fourier basis uses **cosine terms** to represent periodic functions:
+
+$$
+x_i(s) = \cos(i \pi s), \quad i = 0, 1, \dots, n
+$$
+
+This basis tends to be **better conditioned** and provides smoother approximations with **less bias** across the state space, especially for continuous inputs.
+
+
+
+### Experiments
+
+#### Setup
+
+* **Number of runs:** 1
+* **Episodes per run:** 5000
+* **Orders:** 5, 10, 20
+* **Step-sizes:** $$ ( \alpha = 1\times10^{-4} ) and ( 5\times10^{-5} ) $$
+* **Algorithms:** Gradient Monte Carlo with each basis type.
+* **Performance metric:** RMSE between predicted values and analytically derived true values.
+
+The true values were computed using **Dynamic Programming** (iterative policy evaluation) until convergence.
+
+
+
+### Evaluation
+
+For each configuration:
+
+1. Initialize value function with chosen basis type and order.
+2. Run Gradient MC for 5000 episodes.
+3. Compute RMSE at every episode.
+4. Average results over runs.
+5. Plot **learning curves** comparing convergence speed and asymptotic error.
+
+
+### [Results]()
+
+* **Fourier basis** consistently outperformed the **polynomial basis** in both convergence speed and stability.
+* As the order increased:
+
+  * The **Fourier** features captured more fine-grained structure without overfitting.
+  * The **polynomial** features became numerically unstable and prone to oscillation.
+* **Low-order** Fourier bases achieved near-optimal accuracy faster than any polynomial configuration.
+
+Empirically, these results reinforce the conclusion that **polynomial bases are not well-suited for online reinforcement learning**, while **Fourier bases** offer a more robust, smooth generalization behavior.
+
+
+### Key Insights
+
+* Fourier bases generalize better in continuous domains due to their smooth orthogonal representation.
+* Polynomial approximations suffer from poor conditioning as order increases.
+* Even in simple value prediction tasks, **basis selection critically affects learning dynamics**.
+* The Fourier basis has become a preferred choice for function approximation in modern RL settings.
