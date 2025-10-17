@@ -392,9 +392,23 @@ $$
 
 where:
 
-* $$ ( G_t ) $$ is the return,
-* $$ ( \hat{v}(S_t, \mathbf{w}_t) = \mathbf{w}^\top \mathbf{x}(S_t) ) $$  is the approximate value,
-* $$ ( \mathbf{x}(S_t) ) $$ is a binary feature vector produced by the tile coder.
+$$ 
+( G_t )
+$$
+
+is the return,
+
+$$
+( \hat{v}(S_t, \mathbf{w}_t) = \mathbf{w}^\top \mathbf{x}(S_t) )
+$$
+
+is the approximate value,
+
+$$
+( \mathbf{x}(S_t) )
+$$
+
+is a binary feature vector produced by the tile coder.
 
 ---
 
