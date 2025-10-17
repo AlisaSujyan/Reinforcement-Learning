@@ -347,3 +347,130 @@ Empirically, these results reinforce the conclusion that **polynomial bases are 
 * Polynomial approximations suffer from poor conditioning as order increases.
 * Even in simple value prediction tasks, **basis selection critically affects learning dynamics**.
 * The Fourier basis has become a preferred choice for function approximation in modern RL settings.
+
+
+# 4. Tile Coding 
+### Project Overview
+
+This project implements and analyzes **Tile Coding**, a powerful and efficient **feature representation technique** for continuous or high-dimensional state spaces in reinforcement learning.
+
+Tile coding is a form of **coarse coding** that allows overlapping generalization across states, enabling efficient approximation of value functions. 
+Tile coding serves as a bridge between discrete tabular methods and fully continuous function approximation, offering a simple, scalable, and computationally efficient representation suitable for modern RL systems.
+
+
+## Problem Description
+
+The **1000-state random walk** is extended here to a **continuous one-dimensional space** where states are represented as real numbers between 0 and 1001.
+
+### Dynamics
+
+* The agent starts near the center of the state space.
+* Each step moves a random number of states (up to 100) left or right.
+* Episodes terminate when reaching the boundaries.
+* Rewards:
+
+  * −1 upon termination on the left.
+  * +1 upon termination on the right.
+  * 0 for all other transitions.
+
+The objective is to learn the **state-value function** under a fixed policy using **Gradient Monte Carlo** with different state representations:
+
+1. **Single Tiling (State Aggregation)**
+2. **Multiple Overlapping Tilings (Tile Coding)**
+
+
+
+### Learning Algorithm
+
+#### Gradient Monte Carlo (MC)
+
+We use the **Gradient MC** algorithm for value prediction, updating weight vectors according to:
+
+$$
+\mathbf{w}_{t+1} = \mathbf{w}_t + \alpha \left(G_t - \hat{v}(S_t, \mathbf{w}_t)\right) \mathbf{x}(S_t)
+$$
+
+where:
+
+* $$ ( G_t ) $$ is the return,
+* $$ ( \hat{v}(S_t, \mathbf{w}_t) = \mathbf{w}^\top \mathbf{x}(S_t) ) $$  is the approximate value,
+* $$ ( \mathbf{x}(S_t) ) $$ is a binary feature vector produced by the tile coder.
+
+---
+
+### Tile Coding Representation
+
+#### Concept
+
+Tile coding partitions the state space into **multiple overlapping grids**, called **tilings**.
+Each **tiling** divides the space into **tiles** (e.g., equal-width intervals).
+A state activates **one tile per tiling**, meaning multiple features are active simultaneously.
+
+Each active tile corresponds to a binary feature in the feature vector:
+
+$$
+x_i(s) =
+\begin{cases}
+1, & \text{if state } s \text{ falls within tile } i \
+0, & \text{otherwise.}
+\end{cases}
+$$ 
+
+### Example
+
+* **Single Tiling (1 grid):** Equivalent to **state aggregation** — generalization only within the same tile.
+* **Multiple Tilings (e.g., 50):** Achieves **coarse coding**, enabling smooth generalization across neighboring states.
+* Each tiling is **offset** by a small constant (e.g., 4 states) so that neighboring tiles overlap.
+
+### Computational Advantage
+
+* Binary feature vectors → updates involve **only additions**, no multiplications.
+* The number of active features equals the number of tilings — fixed and small.
+* Easy to choose the step-size parameter:
+  
+$$ 
+\alpha = \frac{1}{n}
+$$
+
+  where ( n ) is the number of tilings, ensuring one-trial learning.
+
+
+### Experiments
+
+#### Setup
+
+| Parameter              | Description                                          |
+| ---------------------- | ---------------------------------------------------- |
+| Environment            | 1000-state random walk                               |
+| Algorithm              | Gradient Monte Carlo                                 |
+| Representation         | Tile coding vs single tiling                         |
+| Tiles per tiling       | 200 states per tile                                  |
+| Number of tilings      | 1 (state aggregation) and 50 (coarse coding)         |
+| Offset between tilings | 4 states                                             |
+| Step-size ( \alpha )   | 0.0001 (single tiling), ( 0.0001 / 50 ) (50 tilings) |
+| Episodes               | 5000                                                 |
+| Runs                   | 30 (averaged)                                        |
+
+The true state values were computed via **Dynamic Programming** as reference for RMS error computation.
+
+
+### Results
+
+The experiment reproduces the [figure](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/random-walk-fa/generated_images/figure_9_10.png):
+
+* With **single tiling**, learning is slow and generalization is poor — each state group is updated independently.
+* With **50 overlapping tilings**, the model exhibits:
+
+  * **Faster convergence** (lower RMS error in fewer episodes)
+  * **Smoother value approximation** across states
+  * **Stable learning behavior** despite coarse discretization
+
+
+
+### Key Insights
+
+* Tile coding achieves an excellent balance between **computational efficiency** and **generalization**.
+* The number of **active features per state** remains constant, simplifying parameter tuning.
+* Coarse coding (multiple tilings) dramatically improves learning performance over single-partition methods.
+* Step-size can be scaled intuitively with the number of tilings.
+* Tile coding forms the foundation for feature representation in algorithms like **Sarsa(λ)** and **Actor–Critic** with continuous inputs.

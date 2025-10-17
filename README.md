@@ -33,10 +33,20 @@ This diagram breaks down RL methods into two primary categories:
     - Planning and Learning with Tabular Methods (combination of Dynamic Programming Methods and Temporal-Difference Learning)
     - Multi-Step Bootstrapping Methods(combination of Monte Carlo Methods and Temporal-Difference Learning) 
 #### 2.Approximate Solution Methods (used for large or continuous spaces)
+When dealing with **large or continuous state spaces**, exact tabular methods become impractical.
+Approximate methods generalize experience using **function approximation** — representing value functions with parameterized functions (e.g., linear combinations of features).
 
 ---
 
 ## My Projects
+
+---
+
+## Tabular Solution Methods
+
+---
+
+
 ### 1. [**Tic-Tac-Toe**](https://github.com/AlisaSujyan/Reinforcement-Learning/tree/main/tic-tac-toe)
  Is a simple RL project which demonstrates the application of Reinforcement Learning (RL) in solving the Gambler's Problem using value iteration. The agent learns an optimal betting strategy by estimating the probability of reaching the goal from each state, improving its value function through successive iterations.
 ### 2. [**10-Armed Bandit Problem**](https://github.com/AlisaSujyan/Reinforcement-Learning/tree/main/ten-armed-testbed)
@@ -102,5 +112,85 @@ This diagram breaks down RL methods into two primary categories:
 
 ---
 
+### 11. [**Maximization Bias**](https://github.com/AlisaSujyan/Reinforcement-Learning/tree/main/maximization-bias)
+
+* **Category**: Temporal-Difference Control
+* **Summary**: Demonstrates the concept of **maximization bias**, where standard Q-learning can overestimate action values due to taking the maximum over noisy estimates.
+* **Key Techniques**: Q-Learning, Double Q-Learning, ε-greedy policy
+* **Findings**:
+
+  * Q-learning tends to favor suboptimal actions due to bias in maximum value estimates.
+  * Double Q-learning mitigates this bias by decoupling action selection and evaluation.
+  * The example reproduces **Figure 6.5** from *Sutton & Barto (2018)*.
+
+---
+
+### 12. [**Mazes**](https://github.com/AlisaSujyan/Reinforcement-Learning/tree/main/mazes)
+
+* **Category**: Temporal-Difference Control
+* **Summary**: Implements learning in a maze-like environment to test the performance of different TD control methods.
+* **Key Techniques**: SARSA, Q-Learning, ε-greedy exploration, on-policy vs. off-policy learning
+* **Findings**:
+
+  * Illustrates convergence of control algorithms in deterministic and stochastic maze layouts.
+  * Shows trade-offs between exploration and exploitation in pathfinding.
+
+---
+
+### 13. [**Updates Comparison**](https://github.com/AlisaSujyan/Reinforcement-Learning/tree/main/updates-comparison)
+
+* **Category**: Multi-Step Bootstrapping Methods
+* **Summary**: Compares **TD(0)**, **n-Step TD**, and **Monte Carlo** methods in terms of convergence speed and stability.
+* **Key Techniques**: Multi-step returns, bootstrapping, bias-variance trade-off
+* **Findings**:
+
+  * Smaller n → faster but less accurate updates.
+  * Larger n → slower but less biased convergence.
+  * Intermediate n often performs best — aligning with theoretical predictions.
+
+---
+
+### 14. [**Trajectory Sampling**](https://github.com/AlisaSujyan/Reinforcement-Learning/tree/main/trajectory-sampling)
+
+* **Category**: Planning and Learning with Tabular Methods
+* **Summary**: Demonstrates the relationship between **model-based planning** and **TD learning** through trajectory sampling.
+* **Key Techniques**: Dyna architecture, simulated experience, model-based updates
+* **Findings**:
+
+  * Reinforces how simulated updates can accelerate learning.
+  * Shows equivalence between real and imagined experience when model accuracy is high.
+
+---
+
+## Approximate Solution Methods
+
+---
+
+### 1. [**Random Walk with Function Approximation**](https://github.com/AlisaSujyan/Reinforcement-Learning/tree/main/random-walk-fa)
+
+* **Category**: Linear Function Approximation
+* **Summary**: Extends the Random Walk example to use **gradient Monte Carlo** with linear function approximation.
+* **Key Techniques**: Gradient Monte Carlo, feature representation, mean squared error analysis
+* **Findings**:
+
+  * Demonstrates how linear approximators generalize across states.
+  * Reproduces results consistent with theoretical expectations in *Sutton & Barto, Ch. 9*.
+
+---
+
+### 2. [**Coarse Coding**](https://github.com/AlisaSujyan/Reinforcement-Learning/tree/main/coarse-coding)
+
+* **Category**: Function Approximation
+* **Summary**: Illustrates **coarse coding**—a feature representation method using overlapping receptive fields.
+* **Key Techniques**: Linear approximation, receptive fields, generalization control
+* **Findings**:
+
+  * Shows how receptive field width affects generalization and learning speed.
+  * Narrow fields → localized, detailed learning.
+  * Broad fields → smoother, faster generalization.
+  * Based on **Figure 9.8** from *Sutton & Barto (2018)*.
+
+---
+
 ## References
-* Sutton, R. S., & Barto, A. G. (2018). [Reinforcement Learning](http://incompleteideas.net/book/the-book.html): An Introduction (2nd ed.) 
+* Sutton, R. S., & Barto, A. G. (2018). [Reinforcement Learning](http://incompleteideas.net/book/the-book.html): An Introduction (2nd ed.)
