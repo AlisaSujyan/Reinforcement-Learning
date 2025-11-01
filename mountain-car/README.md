@@ -109,7 +109,7 @@ Time steps per episode are plotted on a log scale.
 
 ---
 
-## 6. Results
+## Results
 
 **[Figure 10.1:](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/mountain-car/generated_images/figure_10_1.png)**
 Shows the evolution of the learned cost-to-go function across episodes.
