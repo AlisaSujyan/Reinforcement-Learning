@@ -25,31 +25,40 @@ There are **10 servers**, and **customers of four priority levels** (`0–3`) ar
 ### Task Dynamics
 
 * Each customer offers a reward based on priority:
+
   $$
   \text{Reward(priority)} = {1, 2, 4, 8}
   $$
+  
 * On each step, the agent must **accept** or **reject** the customer.
 * If all servers are busy, the customer **must** be rejected.
 * Each busy server becomes free with probability:
-  $$
-  p = 0.06
-  $$
+
+$$
+p = 0.06
+$$
+  
 * The queue never empties, and customer priorities are uniformly random.
 * The process continues indefinitely, forming a **continuing task**.
 
 The agent’s state is represented by:
+
 $$
 S_t = (\text{number of free servers}, \text{customer priority})
 $$
+
 and the action set is:
+
 $$
 A_t \in {\text{reject}, \text{accept}}
 $$
 
 The task objective is to **maximize the differential return**:
+
 $$
 \text{maximize } \mathbb{E}[R_t - \bar{R}]
 $$
+
 where $\bar{R}$ is the learned estimate of the **average reward rate**.
 
 ---
@@ -57,11 +66,13 @@ where $\bar{R}$ is the learned estimate of the **average reward rate**.
 ## Learning Algorithm
 
 The **differential semi-gradient SARSA** algorithm is applied with **tile-coding** to approximate the action-value function:
+
 $$
 \hat{q}(s, a, \mathbf{w}) = \mathbf{w}^\top \mathbf{x}(s, a)
 $$
 
 For each transition $(S_t, A_t, R_{t+1}, S_{t+1}, A_{t+1})$, the update is:
+
 $$
 \begin{aligned}
 \delta_t &= R_{t+1} - \bar{R} + \hat{q}(S_{t+1}, A_{t+1}, \mathbf{w}) - \hat{q}(S_t, A_t, \mathbf{w}) \
@@ -115,6 +126,7 @@ The bottom heatmap visualizes the **policy**:
 The policy shows a clear boundary:
 low-priority customers are accepted only when several servers are free, while high-priority customers are accepted more aggressively.
 The learned average reward stabilizes around:
+
 $$
 \bar{R} \approx 2.31
 $$
