@@ -85,7 +85,7 @@ $$
 $$
 
 **Exploration policy:**
-An epsilon-greedy strategy with $\varepsilon = 0$, relying on **optimistic initialization** to drive exploration.
+An $\varepsilon$-greedy strategy with $\varepsilon = 0$, relying on **optimistic initialization** to drive exploration.
 
 **Value Function Representation:**
 Linear combination over active tiles, each with its associated weight.
@@ -109,19 +109,19 @@ Time steps per episode are plotted on a log scale.
 
 ---
 
-## 6. Results
+## Results
 
-**[Figure 10.1:]()**
+**[Figure 10.1:](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/mountain-car/generated_images/figure_10_1.png)**
 Shows the evolution of the learned cost-to-go function across episodes.
 Early in learning, the agent oscillates in the valley due to overly optimistic initial values; later, it converges toward a policy that successfully reaches the goal.
 
-**[Figure 10.2:]()**
+**[Figure 10.2:](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/mountain-car/generated_images/figure_10_2.png)**
 Learning curves for different step sizes show that moderate $\alpha$ values balance stability and learning speed. Too large values lead to divergence.
 
-**[Figure 10.3:]()**
+**[Figure 10.3:](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/mountain-car/generated_images/figure_10_3.png)**
 Multi-step SARSA ($n=8$) learns faster and achieves better asymptotic performance than the 1-step variant, confirming the advantage of intermediate bootstrapping levels.
 
-**[Figure 10.4:]()**
+**[Figure 10.4:](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/mountain-car/generated_images/figure_10_4.png)**
 A systematic evaluation reveals that performance peaks at moderate $n$ (around 4–8) and moderate $\alpha$, consistent with the theoretical trade-off between bias and variance.
 
 ---
