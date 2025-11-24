@@ -41,48 +41,62 @@ There are **2 actions**:
 ### Policies
 
 * **Behavior policy**
+
   $$
   b(\text{solid}) = \frac{1}{7}, \quad b(\text{dashed}) = \frac{6}{7}
   $$
+  
   Produces a *uniform next-state distribution*.
 
 * **Target policy**
-  $$
-  \pi(\text{solid}) = 1
-  $$
+
+$$
+\pi(\text{solid}) = 1
+$$
+  
+  
   Concentrates the on-policy distribution on the **lower** state.
 
 ### Rewards and Discount
 
 * Reward on all transitions:
-  $$
-  R(s,a) = 0
-  $$
+
+$$
+R(s,a) = 0
+$$
+  
 * Discount rate:
-  $$
-  \gamma = 0.99
-  $$
+
+$$
+\gamma = 0.99
+$$
+  
 
 ### Feature Representation
 
 Each state is represented by an **8-dimensional** linear feature vector.
 
-For upper states (i = 0, \ldots, 5):
+For upper states (i = 0, ... , 5):
+
 $$
 \mathbf{x}(s=i) = (0,\ldots,2,\ldots,0,\ 1)
 $$
 
+
 For the lower state:
+
 $$
 \mathbf{x}(s=6) = (0,\ldots,0,\ 1,\ 2)
 $$
 
 The true value function is:
+
 $$
 v_\pi(s) = 0
 $$
 
 and is exactly representable by:
+
 $$
 \mathbf{w} = \mathbf{0}
 $$
@@ -96,6 +110,7 @@ Even though the features are linearly independent and exact representation is po
 ### Semi-gradient Off-policy TD(0)
 
 Using importance sampling ratio:
+
 $$
 \rho =
 \begin{cases}
@@ -105,11 +120,13 @@ $$
 $$
 
 TD error:
+
 $$
 \delta = R + \gamma \mathbf{w}^\top \mathbf{x}(S') - \mathbf{w}^\top \mathbf{x}(S)
 $$
 
 Update:
+
 $$
 \mathbf{w} \leftarrow \mathbf{w} + \alpha \rho , \delta , \mathbf{x}(S)
 $$
@@ -119,16 +136,19 @@ $$
 ### Semi-gradient DP (Expected Update)
 
 Expected next-state value:
+
 $$
 \mathbb{E}_\pi [V(S')] = \gamma \mathbf{w}^\top \mathbf{x}(\text{lower})
 $$
 
 Bellman error:
+
 $$
 \delta(s) = \gamma \mathbf{w}^\top \mathbf{x}(\text{lower}) - \mathbf{w}^\top \mathbf{x}(s)
 $$
 
 Update over all states:
+
 $$
 \mathbf{w} \leftarrow \mathbf{w} + \frac{\alpha}{|S|} \sum_{s} \delta(s),\mathbf{x}(s)
 $$
@@ -147,6 +167,7 @@ Two experiments were run for **1,000 steps/sweeps**:
 | **Semi-gradient DP**               | Update using the full DP expectation sweep                       |
 
 Initial weights are:
+
 $$
 \mathbf{w} = (1,1,1,1,1,1,10,1)
 $$
@@ -157,7 +178,7 @@ The weight vector is recorded at every iteration and plotted component-wise.
 
 ## Results
 
-**[Figure 11.2:]()**
+**[Figure 11.2:](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/counter-examples/generated_images/figure_11_2.png)**
 Both experiments show unstable learning:
 
 * All weight components diverge without bound.
