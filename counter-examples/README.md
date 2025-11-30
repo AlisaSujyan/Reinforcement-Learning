@@ -231,8 +231,8 @@ The results reproduce **Figure 11.5** from Sutton & Barto.
 This project studies the behavior of the **two-time-scale TDC algorithm** on Baird’s off-policy counterexample.
 TDC ensures stable value-function learning through a coupled update of:
 
-* a **primary parameter vector** ( \mathbf{w} ) for the value function, and
-* a **secondary vector** ( \mathbf{v} ) solving a correction equation.
+* a **primary parameter vector** ($$\mathbf{w}$$) for the value function, and
+* a **secondary vector** ($$\mathbf{v}$$) solving a correction equation.
 
 Two experiments are performed:
 
@@ -267,7 +267,7 @@ TDC aims to minimize the **mean squared projected Bellman error**, measured usin
 * RMS-VE
 * RMS-PBE
 
-These diagnostics are plotted along with each component of ( \mathbf{w} ).
+These diagnostics are plotted along with each component of ($$\mathbf{w}$$).
 
 ---
 
@@ -275,31 +275,23 @@ These diagnostics are plotted along with each component of ( \mathbf{w} ).
 
 TDC is a **two-time-scale** method:
 
-### Primary update (for ( \mathbf{w} ))
+### Primary update (for ($$\mathbf{w}$$))
 
 $$
-\mathbf{w} \leftarrow \mathbf{w}
+  \mathbf{w} \leftarrow \mathbf{w} * \alpha, \rho_t \left( \delta_t \mathbf{x}(S_t) - \gamma, \mathbf{x}(S_{t+1}) , \mathbf{v}^\top \mathbf{x}(S_t) \right)
+$$
 
-* \alpha, \rho_t \left( \delta_t \mathbf{x}(S_t)
-
-- \gamma, \mathbf{x}(S_{t+1}) , \mathbf{v}^\top \mathbf{x}(S_t) \right)
-  $$
-
-### Secondary update (for ( \mathbf{v} ))
+### Secondary update (for ($$\mathbf{v}$$))
 
 $$
-\mathbf{v} \leftarrow \mathbf{v}
-
-* \beta, \rho_t \left( \delta_t - \mathbf{v}^\top \mathbf{x}(S_t) \right) \mathbf{x}(S_t)
-  $$
+\mathbf{v} \leftarrow \mathbf{v} * \beta, \rho_t \left( \delta_t - \mathbf{v}^\top \mathbf{x}(S_t) \right) \mathbf{x}(S_t)
+$$
 
 with:
 
 $$
-\delta_t = R_{t+1} + \gamma \mathbf{w}^\top \mathbf{x}(S_{t+1})
-
-* \mathbf{w}^\top \mathbf{x}(S_t)
-  $$
+\delta_t = R_{t+1} + \gamma \mathbf{w}^\top \mathbf{x}(S_{t+1}) * \mathbf{w}^\top \mathbf{x}(S_t)
+$$
 
 The step sizes satisfy:
 
@@ -315,7 +307,7 @@ The second experiment computes:
 
 * the expected TD error
 * the expected importance sampling ratio
-* the expected update for both ( \mathbf{w} ) and ( \mathbf{v} )
+* the expected update for both ($$\mathbf{w}$$) and ($$\mathbf{v}$$)
 
 This eliminates variance and produces the smooth trajectory shown on the right side of Figure 11.5.
 
@@ -325,16 +317,16 @@ This eliminates variance and produces the smooth trajectory shown on the right s
 
 ### Experimental Setup
 
-| Parameter                       | Value                   |
-| ------------------------------- | ----------------------- |
-| Initial ( \mathbf{w} )          | ( (1,1,1,1,1,1,10,1) )  |
-| Initial ( \mathbf{v} )          | Zero vector             |
-| Steps / sweeps                  | 1000                    |
-| ( \alpha ) (for ( \mathbf{w} )) | 0.005                   |
-| ( \beta ) (for ( \mathbf{v} ))  | 0.05                    |
-| Discount                        | ( \gamma = 0.99 )       |
-| Behavior policy                 | Solid with prob ( 1/7 ) |
-| Target policy                   | Always solid            |
+| Parameter                           | Value                   |
+| ----------------------------------- | ----------------------- |
+| Initial ($$\mathbf{w}$$)            | ( (1,1,1,1,1,1,10,1) )  |
+| Initial ($$\mathbf{v}$$)            | Zero vector             |
+| Steps / sweeps                      | 1000                    |
+| ($$\alpha$$) (for ($$\mathbf{w}$$)) | 0.005                   |
+| ($$\beta$$) (for ($$\mathbf{v}$$))  | 0.05                    |
+| Discount                            | ($$\gamma = 0.99$$)   |
+| Behavior policy                     | Solid with prob ( 1/7 ) |
+| Target policy                       | Always solid            |
 
 ### Two experiments are run:
 
@@ -345,15 +337,15 @@ This eliminates variance and produces the smooth trajectory shown on the right s
 
 Both experiments track:
 
-* Individual weight components ( w_i )
-* ( \sqrt{\overline{VE}} )
-* ( \sqrt{\overline{PBE}} )
+* Individual weight components ($$w_i$$) 
+* ($$\sqrt{\overline{VE}}$$)
+* ($$\sqrt{\overline{PBE}}$$)
 
 ---
 
 ## Results
 
-**[Figure 11.5:]()** Temporal-Difference with Gradient Correction on Baird’s Counterexample
+**[Figure 11.5:](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/counter-examples/generated_images/figure_11_5.png)** Temporal-Difference with Gradient Correction on Baird’s Counterexample
 
 The results show:
 
@@ -371,7 +363,7 @@ These observations match the discussion in Sutton & Barto and replicate the figu
 
 * TDC is stable on this difficult off-policy problem, unlike semi-gradient TD.
 * The algorithm’s **two-time-scale design** is crucial for its theoretical guarantees.
-* The secondary vector ( \mathbf{v} ) must learn faster than ( \mathbf{w} ).
+* The secondary vector ($$\mathbf{v}$$) must learn faster than ($$\mathbf{w}$$).
 * Driving PBE to zero does **not** imply fast value-function convergence.
 * Expected TDC helps visualize theoretical behavior that is otherwise obscured by sampling noise.
 
@@ -419,38 +411,36 @@ under the target policy (always choosing the solid action), while data is genera
 The Emphatic-TD update depends on:
 
 * **TD error**
-  $$
-  \delta_t = R_{t+1} + \gamma \mathbf{w}^\top \mathbf{x}(S_{t+1})
 
-  * \mathbf{w}^\top \mathbf{x}(S_t)
-    $$
-* **Importance sampling ratio** ( \rho_t )
-* **Emphasis** ( M_t ), evolving as
-  $$
+$$
+  \delta_t = R_{t+1} + \gamma \mathbf{w}^\top \mathbf{x}(S_{t+1}) * \mathbf{w}^\top \mathbf{x}(S_t)
+$$
+  
+* **Importance sampling ratio** ( $$\rho_t$$ )
+* **Emphasis** ( $$M_t$$ ), evolving as
+
+$$
   M_t = \rho_t , \gamma , M_{t-1} + I_t
-  $$
+$$
 
-All experiments use **interest ( I_t = 1 )**, matching Figure 11.6.
+All experiments use **interest ($$I_t = 1$$)**, matching Figure 11.6.
 
 ---
 
 ## Learning Algorithm
 
-Expected Emphatic TD computes the **expected update** of both the weight vector ( \mathbf{w} ) and the emphasis ( M ) across all states.
+Expected Emphatic TD computes the **expected update** of both the weight vector ($$\mathbf{w}$$) and the emphasis ($$M$$) across all states.
 
 ### Weight Update
 
 $$
-\mathbf{w} \leftarrow \mathbf{w}
-
-* \alpha , \mathbb{E}!\left[ M_t , \rho_t , \delta_t , \mathbf{x}(S_t) \right]
-  $$
+\mathbf{w} \leftarrow \mathbf{w} * \alpha , \mathbb{E}!\left[ M_t , \rho_t , \delta_t , \mathbf{x}(S_t) \right]
+$$
 
 ### Emphasis Update
 
 $$
-M_{t+1}
-= \mathbb{E}!\left[ \rho_t \gamma M_t + I_t \right]
+M_{t+1} = \mathbb{E}!\left[ \rho_t \gamma M_t + I_t \right]
 $$
 
 The implementation computes these expectations by iterating over all states and weighting transitions according to the behavior policy.
@@ -463,20 +453,20 @@ This produces smooth, variance-free learning curves that match the theoretical t
 
 ### Experimental Configuration
 
-| Parameter                        | Value                                     |
-| -------------------------------- | ----------------------------------------- |
-| Initialization of ( \mathbf{w} ) | ( (1,1,1,1,1,1,10,1) )                    |
-| Initial emphasis                 | ( M_0 = 0 )                               |
-| Step size                        | ( \alpha = 0.03 )                         |
-| Sweeps                           | 1000                                      |
-| Discount                         | ( \gamma = 0.99 )                         |
-| Interest                         | ( I_t = 1 )                               |
-| Policy                           | Target: solid; Behavior: solid w.p. (1/7) |
+| Parameter                            | Value                                     |
+| ------------------------------------ | ----------------------------------------- |
+| Initialization of ($$\mathbf{w}$$)   | ((1,1,1,1,1,1,10,1))                      |
+| Initial emphasis                     | ($$M_0 = 0$$)                             |
+| Step size                            | ($$\alpha = 0.03$$)                       |
+| Sweeps                               | 1000                                      |
+| Discount                             | ($$\gamma = 0.99$$)                       |
+| Interest                             | ($$I_t = 1$$)                             |
+| Policy                               | Target: solid; Behavior: solid w.p. (1/7) |
 
 ### Outputs Recorded
 
-* Each component of the weight vector ( w_i )
-* RMS value error ( \sqrt{\overline{VE}} )
+* Each component of the weight vector ($$w_i$$)
+* RMS value error ($$\sqrt{\overline{VE}}$$)
 
 These diagnostics form Figure 11.6.
 
@@ -484,7 +474,7 @@ These diagnostics form Figure 11.6.
 
 ## Results
 
-**[Figure 11.6:]()** Expected Emphatic TD on Baird’s Counterexample
+**[Figure 11.6:](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/counter-examples/generated_images/figure_11_6.png)** Expected Emphatic TD on Baird’s Counterexample
 
 The expected ETD trajectories show:
 
