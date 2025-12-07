@@ -192,5 +192,45 @@ Approximate methods generalize experience using **function approximation** — r
 
 ---
 
+## **3. [Access Control](https://github.com/AlisaSujyan/Reinforcement-Learning/tree/main/access-control)**
+
+* **Category**: Differential Temporal-Difference Learning
+* **Summary**: Solves the Access-Control Queuing Task using **differential semi-gradient SARSA** with tile coding, learning an optimal accept/reject policy under average-reward formulation.
+* **Key Techniques**: Tile coding, average-reward TD, ε-greedy control
+
+---
+
+## **4. [Mountain Car — n-step SARSA](https://github.com/AlisaSujyan/Reinforcement-Learning/tree/main/mountain-car)**
+
+* **Category**: Multi-Step Bootstrapping (Function Approximation)
+* **Summary**: Applies **semi-gradient n-step SARSA** with tile coding to the Mountain Car control problem. Reproduces Figures 10.1–10.4 showing cost-to-go surfaces and learning performance across n and α.
+* **Key Techniques**: Tile coding, n-step SARSA, optimistic initialization
+
+---
+
+## **5. [Counterexamples in Reinforcement Learning](https://github.com/AlisaSujyan/Reinforcement-Learning/tree/main/counter-examples)**
+
+* **Category**: Off-Policy Learning Pathologies
+* **Summary**: Implements **Baird’s counterexample**, demonstrating divergence of off-policy TD(0), and compares stable alternatives: **TDC (GTD0)** and **Expected Emphatic TD**. Reproduces Figures 11.2, 11.5, and 11.6.
+* **Key Techniques**: Gradient-TD, Emphatic TD, off-policy instability
+
+---
+
+## **6. [Random Walk with Eligibility Traces](https://github.com/AlisaSujyan/Reinforcement-Learning/tree/main/random-walk-et)**
+
+* **Category**: Multi-Step Bootstrapping (Eligibility Traces)
+* **Summary**: Evaluates **off-line λ-return**, **TD(λ)**, and **true online TD(λ)** on the 19-state random walk, reproducing Figures 12.3, 12.6, and 12.8. Compares stability and RMSE across λ and α.
+* **Key Techniques**: λ-returns, eligibility traces, true online TD(λ)
+
+---
+
+## **7. [Mountain Car with Eligibility Traces](https://github.com/AlisaSujyan/Reinforcement-Learning/tree/main/mountain-car-et)**
+
+* **Category**: Temporal-Difference Control (Function Approximation)
+* **Summary**: Applies **SARSA(λ)** with multiple trace types (replacing, accumulating, Dutch, clearing) to Mountain Car. Reproduces Figures 12.10 and 12.11, comparing learning efficiency across λ and trace mechanisms.
+* **Key Techniques**: SARSA(λ), eligibility traces, tile coding, Dutch traces
+
+---
+
 ## References
 * Sutton, R. S., & Barto, A. G. (2018). [Reinforcement Learning](http://incompleteideas.net/book/the-book.html): An Introduction (2nd ed.)
