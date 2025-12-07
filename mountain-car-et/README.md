@@ -1,7 +1,7 @@
-# Mountain Car — SARSA$(\lambda)$ with Eligibility Traces
+# Mountain Car — SARSA($\lambda$) with Eligibility Traces
 
 **Mountain Car Task:**
-Implementation of the **SARSA$(\lambda)$** algorithm on the continuous-control Mountain Car environment using **tile-coding function approximation** and several types of **eligibility traces** (accumulating, replacing, replacing with clearing, Dutch).
+Implementation of the **SARSA($\lambda$)** algorithm on the continuous-control Mountain Car environment using **tile-coding function approximation** and several types of **eligibility traces** (accumulating, replacing, replacing with clearing, Dutch).
 This project replicates Figures **12.10** and **12.11** from Sutton & Barto (2nd ed.), enabling direct comparison to the earlier **n-step SARSA** results from Chapter 10.
 
 ---
@@ -13,7 +13,7 @@ This project evaluates how different eligibility-trace mechanisms affect learnin
 The experiments show:
 
 * The effect of varying the **trace-decay parameter λ**,
-* Comparison of **SARSA$(\lambda)$** to **n-step SARSA**,
+* Comparison of **SARSA($\lambda$)** to **n-step SARSA**,
 * The impact of trace types:
 
   * accumulating,
@@ -21,7 +21,7 @@ The experiments show:
   * replacing-with-clearing,
   * Dutch traces (true online SARSA).
 
-The fading-trace bootstrapping strategy inherent in SARSA$(\lambda)$ often provides **more efficient learning** compared to fixed-length bootstrapping methods.
+The fading-trace bootstrapping strategy inherent in SARSA($\lambda$) often provides **more efficient learning** compared to fixed-length bootstrapping methods.
 
 These experiments reproduce textbook Figures **12.10** and **12.11**, comparing:
 
@@ -83,7 +83,7 @@ $$
 
 ## Learning Algorithm
 
-SARSA$(\lambda)$ combines:
+SARSA($\lambda$) combines:
 
 1. **On-policy TD control**
 2. **Eligibility traces** for temporal credit assignment
@@ -106,6 +106,7 @@ $$
 Examples:
 
 **Accumulating Trace**
+
 $$
 \mathbf{z}*t = \gamma\lambda \mathbf{z}*{t-1} + \nabla \hat{q}(S_t,A_t)
 $$
@@ -133,16 +134,14 @@ Two major experiments replicate textbook Figures 12.10 and 12.11.
 
 ### **Experiment 1 — Figure 12.10**
 
-**SARSA$(\lambda)$ with replacing traces**
+**SARSA($\lambda$) with replacing traces**
 
 * 30 runs
 * 50 episodes
 * λ ∈ {0.99, 0.95, 0.5, 0}
 * Step sizes:
 
-$$
-\alpha \in\left{ \frac{1}{4}, \frac{2}{4}, \ldots, \frac{7}{4}\right}
-$$
+$\alpha \in \left\lbrace \frac{1}{4}, \frac{2}{4}, \ldots, \frac{7}{4} \right\rbrace$
 
 Performance measured as **steps per episode**, averaged over runs and episodes.
 
@@ -176,24 +175,24 @@ $$
 
 ## Results
 
-### **[Figure 12.10:](../generated_images/figure_12_10.png)**
+### **[Figure 12.10:](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/mountain-car-et/generated_images/figure_12_10.png)**
 
-SARSA$(\lambda)$ with replacing traces achieves **more efficient learning** for larger λ values.
-Compared to $n$-step SARSA (Chapter 10), SARSA$(\lambda)$ typically:
+SARSA($\lambda$) with replacing traces achieves **more efficient learning** for larger λ values.
+Compared to $n$-step SARSA (Chapter 10), SARSA($\lambda$) typically:
 
 * Converges faster
 * Requires fewer steps per episode
-* Benefits from trace-based bootstrapping rather than fixed-$n$ updates
+* Benefits from trace-based bootstrapping rather than fixed - $n$ updates
 
 Intermediate λ values again provide the best trade-off between bias and variance.
 
 ---
 
-### **[Figure 12.11:](../generated_images/figure_12_11.png)**
+### **[Figure 12.11:](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/mountain-car-et/generated_images/figure_12_11.png)**
 
 Comparison across trace types reveals:
 
-* **True online SARSA$(\lambda)$ (Dutch traces)** provides the best performance.
+* **True online SARSA($\lambda$) (Dutch traces)** provides the best performance.
 * **Replacing traces** also perform well and are more stable than accumulating traces.
 * **Accumulating traces** become unstable for large α (steep divergence at α > 0.6).
 * **Replacing-with-clearing** offers advantages in deterministic tile-coded domains by reducing interference from non-selected actions.
@@ -202,7 +201,7 @@ Comparison across trace types reveals:
 
 ## Key Insights
 
-* SARSA$(\lambda)$ performs better than $n$-step SARSA due to **smooth bootstrapping decay**.
+* SARSA($\lambda$) performs better than $n$-step SARSA due to **smooth bootstrapping decay**.
 * Eligibility traces significantly affect performance — especially with function approximation.
 * Dutch traces (true online SARSA) provide:
 
@@ -216,13 +215,13 @@ Comparison across trace types reveals:
 
 ## Conclusion
 
-This project demonstrates the effectiveness of **SARSA$(\lambda)$** with different eligibility trace strategies on the Mountain Car control problem.
+This project demonstrates the effectiveness of **SARSA($\lambda$)** with different eligibility trace strategies on the Mountain Car control problem.
 
 * Larger λ values improve early learning by extending temporal credit assignment.
-* True online SARSA$(\lambda)$ (Dutch traces) yields the **best overall performance**.
+* True online SARSA($\lambda$) (Dutch traces) yields the **best overall performance**.
 * Trace selection dramatically influences stability, convergence speed, and reward efficiency.
 
-These results show that **gradient-corrected traces** (Dutch) and **tile coding** form a powerful combination for continuous control tasks under SARSA$(\lambda)$.
+These results show that **gradient-corrected traces** (Dutch) and **tile coding** form a powerful combination for continuous control tasks under SARSA($\lambda$).
 
 ---
 
