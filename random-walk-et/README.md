@@ -1,8 +1,9 @@
 ## 19-State Random Walk — λ-Return Algorithms
 
-**19-State Random Walk:**
-Implementation of **off-line λ-return**, **TD(λ)**, and **online λ-return (True online TD(λ))** algorithms to evaluate temporal-difference learning methods with eligibility traces on a **19-state random walk problem**.
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+##### **19-State Random Walk:**
+##### Implementation of **off-line λ-return**, **TD(λ)**, and **online λ-return (True online TD(λ))** algorithms to evaluate temporal-difference learning methods with eligibility traces on a **19-state random walk problem**.
+---
 
 ## Project Overview
 
@@ -140,13 +141,13 @@ $$
 
 ## Results
 
-**[Figure 12.3:](../generated_images/figure_12_3.png)**
+**[Figure 12.3:](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/random-walk-et/generated_images/figure_12_3.png)**
 Off-line λ-return performance shows **best results at intermediate λ**, similar to n-step TD methods. Small λ behaves like 1-step TD, λ=1 approximates Monte Carlo.
 
-**[Figure 12.6:](../generated_images/figure_12_6.png)**
+**[Figure 12.6:](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/random-walk-et/generated_images/figure_12_6.png)**
 TD(λ) closely matches off-line λ-return when α is optimal or smaller. Large α values cause instability, highlighting the need for careful step-size selection.
 
-**[Figure 12.8:](../generated_images/figure_12_8.png)**
+**[Figure 12.8:](https://github.com/AlisaSujyan/Reinforcement-Learning/blob/main/random-walk-et/generated_images/figure_12_8.png)**
 Online λ-return slightly outperforms off-line λ-return due to **incremental updates within episodes**, confirming benefits of fully online learning.
 
 ---
